@@ -30,7 +30,7 @@ git clone https://github.com/lordofthejars-ai/galaxium-travels.git
 * Java 21+
 * Podman/Docker
 
-Open 3 terminal windows and start each of the services.
+Open 3 terminal windows and start each service.
 
 === Frontend
 
@@ -49,7 +49,7 @@ cd booking-system-backend-quarkus
 ./mvnw quarkus:dev
 ----
 
-IMPORTANT: You need to have Podman/Docker (Desktop) installed to run this demo. Quarkus application will start the PostgreSQL container automatically.
+IMPORTANT: You need to have Podman/Docker (Desktop) installed to run this demo. The Quarkus application will automatically start the PostgreSQL container.
 
 === Hold Service
 
@@ -68,7 +68,7 @@ Open the page and click the `Book a Flight` button:
 
 image::web1.png[]
 
-Then before booking a flight, push the `Login` button:
+Then, before booking a flight, push the `Login` button:
 
 image::web2.png[]
 
@@ -76,8 +76,8 @@ And use `Alice` and `alice@example.com` to authenticate:
 
 image::web3.png[]
 
-After that, select one of the flights and execute all the flow till you book it.
+After that, select one of the flights and run the entire flow until you book it.
 
 image::web4.png[]
 
-If you finish without any error, means that the application is running correctly, and we can start using the code assistant.
+If you finish without any errors, it means that the application is running correctly, and we can start using the code assistant.

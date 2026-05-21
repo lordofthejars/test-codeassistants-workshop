@@ -1,8 +1,0 @@
-= Identifying and Fixing UI Problems with Chrome Dev Tools
-
-In the previous section, we've used Playwright MCP Server to access the web application. 
-But there are another one, that even though only works with Chrome, it offers an unvaluable information for testers.
-
-The Code Assistant has all the Chrome Dev Tools data available.
-From CSS, JavaScript, network traffic, ... and you can use this information to ask complex questions such as _Analyze the network traffic and create a report showing communications that could be improve to offer a better user experience_.
-

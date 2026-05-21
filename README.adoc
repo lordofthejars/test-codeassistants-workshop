@@ -1,0 +1,19 @@
+= IBM Bob (and Code Assistants) for Testers
+
+This workshop shows how Code Assistants can help testers execute, verify, and get hints for different kinds of tests.
+
+From unit tests, integration tests, performance tests, or security tests to UI tests.
+
+The first step before starting with the workshop is cloning this repository locally, as you'll need some bits later.
+
+Then you can start with the steps:
+
+step-1:: Register and install IBM Bob. You can skip this step if you already have an account and IBM Bob installed, or if you plan to use another Code Assistant.
+
+step-2:: Install and run the application under test.
+
+step-3:: Develop Backend tests (integration, security, performance, ...)
+
+step-4:: Develop Frontend Exploratory tests with Playwright
+
+step-5:: Develop UX Tests using Chrome Dev Tools

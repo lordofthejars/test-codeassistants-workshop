@@ -1,0 +1,81 @@
+= Identifying and Fixing UI Problems with Chrome Dev Tools
+
+In the previous section, we used Playwright MCP Server to access the web application. 
+But there is another one, which, even though it only works with Chrome, offers invaluable information for testers.
+
+The Code Assistant has all the Chrome Dev Tools data available.
+From CSS, JavaScript, network traffic, ... you can use this information to ask complex questions such as: _Analyze the network traffic and create a report showing communications that could be improved to offer a better user experience_.
+
+== Open Project
+
+Open the Booking System Frontend from the previous repository in your Code Assistant, as we are going to start detecting UI issues and fixing them.
+
+== Finding Bugs
+
+Let's describe a possible bug reported by a user:
+
+[quote, IBM BOB]
+----
+You are a QA engineer verifying an issue reported by a user who cannot see the Login button on the home page of our Galactic Travel Agency.
+
+Navigate to the MCP server in the Chrome DevTools at http://localhost:5173 and verify that this is correct. If the user is right, add the button to the menu bar with the same style as the other buttons. Also, find the logic for the login button and reuse it here so the logic works.
+
+Finally, capture a screenshot of the final result and send it to me so I can validate whether it is correct.
+
+At the end, close the browser.
+----
+
+Similar to Playwright, keep an eye on the chat window in case you need to approve the execution of any MCP tool.
+
+TIP: In this case, we are describing the issue directly in the Prompt, but we could connect the Code Assistant to the Issue Manager and seed the information from the Issue Manager directly to the Context.
+
+Let's use Chrome Dev Tools for testing performance issues.
+
+== Testing Performance
+
+As testers, we can verify that there are no performance issues in the UI before we release it.
+At the end, these tests are not blockers, but they are important for detecting them and notifying upper management so they can decide whether to proceed with the release.
+
+You do this with Performance Tests, but with Code Assistants, we can perform surgery on specific parts of the application and provide a complete analysis of how and why things are happening.
+
+Start a New Conversation and run the following prompt:
+
+[quote, IBM BOB]
+----
+You are a tester expert in analyzing traces and network traffic to find performance issues.
+
+Please check the LCP (Largest Contentful Paint) for http://localhost:5173/flights. Tell me which element is the LCP, run a performance trace, and provide actionable steps (if necessary) to reduce its render time in my CSS or HTML.
+----
+
+This prompt generates a summary of changes to use to improve performance.
+The idea behind this report is to identify the issues and document them for future releases.
+
+== Nielsen's Heuristics
+
+
+UX Tests are also an important part of the release process. We can use Nielsen's 10 heuristics to navigate the web application and automatically identify any issues.
+Start a New Task and run the following prompt:
+
+[quote, IBM BOB]
+----
+You are a UX Designer tester who wants to apply Nielsen's 10 heuristics to User Interface Design.
+
+Execute the following flow using the Chrome Dev Tool MCP to verify Nielsen's 10 heuristics:
+
+1. Go to http://localhost:5173/flights
+2. Push the Login button and introduce Alice as the username and alice@example.com as the email.
+3. Go to My Bookings and check the list of bookings.
+4. Close the browser
+
+Then create a report for heuristics, output only when there is a plausible violation tied to the flow.
+
+The report should contain the following information:
+
+| Heuristic # | Issue | Evidence (step # or file:line) | Severity |
+
+Use: cosmetic / minor / major / blocker.
+
+If no violation for a heuristic, write "No issue observed from described flow" — do not pad.
+----
+
+The output is a report with any violations found.
