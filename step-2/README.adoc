@@ -80,4 +80,4 @@ After that, select one of the flights and run the entire flow until you book it.
 
 image::web4.png[]
 
-If you finish without any errors, it means that the application is running correctly, and we can start using the code assistant.
+If you finish without errors, it means the application is running correctly, and we can start using the code assistant.
