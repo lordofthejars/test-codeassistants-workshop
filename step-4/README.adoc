@@ -14,7 +14,7 @@ Close IBM Bob project, and `Open` a new one pointing to `galaxium-travels-playwr
 
 == Configuring Code Assistant
 
-To configure IBM Bob to use the MCP Server, go to the `.bob` directory (it is already created and has already some content there), and create a `mcp.json` file with the following content:
+To configure IBM Bob to use the MCP Server, go to the `.bob` directory (it is already created and has some content there), and create a `mcp.json` file with the following content:
 
 [source, json]
 ----
@@ -39,7 +39,7 @@ To configure IBM Bob to use the MCP Server, go to the `.bob` directory (it is al
 ----
 
 Then save the file, and the MCP server is configured and started.
-You can verify it by going to MCP Servers section:
+You can verify it by going to the MCP Servers section:
 
 image::bobmcp.png[]
 
@@ -53,9 +53,9 @@ Let's start by asking to create a test plan:
 
 [quote, IBM BOB]
 ----
-You are an expert tester, and you need to do some exploratory testing plan for my web application hosted at http://localhost:5173/
+You are an expert tester, and you need to do an exploratory testing plan for my web application hosted at http://localhost:5173/
 
-The application is a webpage for booking intergalactic trips, so you can expect flights, bookings, different kinds of trips (economy, business, ...), and booking extras such as heavy luggage.
+The application is a webpage for booking intergalactic trips, so you can expect flights, bookings, various trip types (economy, business, ...), and extras such as heavy luggage.
 
 When you need to log in to the system, use the username Alice and the email alice@example.com as your password/email.
 
@@ -73,28 +73,28 @@ If you don't approve it, execution is paused, and no activity occurs.
 
 image::bobapprove.png[]
 
-After some minutes, and after watching the browser do things automatically, we end up with an exploratory testing plan file that explains all the steps you can execute and some open questions that could be addressed.
+After a few minutes, and after watching the browser handle things automatically, we end up with an exploratory testing plan file that outlines all the steps you can execute and some open questions that could be addressed.
 
 == Implementing Test Plan
 
-For now, let's leave the test plan as is. We can get feedback from the Code Assistant and ask it to improve it further, but for the sake of simplicity, let's ask the Code Assistant to implement the exploratory test.
+For now, let's leave the test plan as is. We can get feedback from the Code Assistant and ask it to improve the code further, but for simplicity, let's have it implement the exploratory test.
 
-WARNING: This step consumes a lot of tokens. You can skip it if you only have a few tokens left to run the last example in the workshop.
+WARNING: This step consumes a lot of tokens. You can skip it if you only have a few tokens left to run the workshop's last example.
 
 [quote, IBM BOB]
 ----
 You are an expert Java developer who knows how to write Playwright tests.
 
-Implement only the exploratory test plan created in the previous step using the Playwright Java framework and following the best practices, such as the PageObjects pattern.
-The project already has the Playwright dependency registered, so the version is fixed and doesn't need to change or be configured.
+Implement only the exploratory test plan created in the previous step using the Playwright Java framework and following best practices, such as the Page Objects pattern.
+The project already has the Playwright dependency registered, so the version is fixed and doesn't need to be changed or configured.
 
 Use the Plywright MCP to execute and get any runtime information you need to generate the test, and also use the playwright-java skill to find the best practices before implementing anything with Playwright Java. 
 ----
 
-After the prompt execution, Code Assistant has created all the Playwright classes required to implement the tests. 
+After the prompt executes, Code Assistant creates all the Playwright classes required to implement the tests. 
 
 Now is the time to ask Code Assistant to implement any of the test cases. 
-Notice that this step might not be required if it has condensed the creation of classes and the tests into a single step.
+Notice that this step might not be required if it has condensed class creation and testing into a single step.
 Just follow the AI conversation.
 
 [quote, IBM BOB]
@@ -102,4 +102,4 @@ Just follow the AI conversation.
 Can you code the smoke-test classes using the previously implemented classes?
 ----
 
-After some minutes, we'll have all the smoke tests for the application implemented using all the infrastructure classes created previously.
+After a few minutes, we'll have implemented all the smoke tests for the application using all the infrastructure classes created previously.
