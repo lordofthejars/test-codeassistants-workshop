@@ -12,7 +12,7 @@ Let's start with a simple one: a developer has written some business logic but d
 
 [quote, IBM BOB]
 ----
-Act as a Tester, Generate relevant test cases for the FlightResource use case For each test, include Name, Description, Steps, and Expected Result. Consider both typical use cases and edge cases.
+Act as a Tester, generate relevant test cases for the FlightResource use case. For each test, include Name, Description, Steps, and Expected Result. Consider both typical use cases and edge cases.
 ----
 
 It creates a Markdown file that describes all test cases.
@@ -36,7 +36,7 @@ As testers, we might ask code assistants to detect this situation and fix the mi
 Act as a Tester, what are some negative test cases for the UserResource registerUser endpoint? How could this be tested with invalid or unexpected input?
 ----
 
-Code assistant creates a new file `USER_RESOURCE_NEGATIVE_TEST_CASES.md` with the negative tests.
+The code assistant creates a new file `USER_RESOURCE_NEGATIVE_TEST_CASES.md` containing the negative tests.
 
 If the test case has not been generated, run the following prompt:
 
@@ -45,7 +45,7 @@ If the test case has not been generated, run the following prompt:
 Act as a Developer, Using the USER_RESOURCE_NEGATIVE_TEST_CASES.md file can you implement the first 2 use cases using JUnit and Quarkus Test framework.
 ----
 
-As in the previous case, code assitant creates a new class file and executes the verify they are working.
+As in the previous case, the code assistant creates a new class file and runs verification to ensure it works.
 
 After this, push the `Start New Task` button to start a new conversation.
 
@@ -62,7 +62,7 @@ Act as a Tester, identify the areas of the system that should be included in reg
 Create a file with all the areas.
 ----
 
-Code Assistant creates a new file with possible regressions.
+Code Assistant creates a new file that may contain regressions.
 
 After this, push the `Start New Task` button to start a new conversation.
 
@@ -72,7 +72,7 @@ If a user or a customer reports a bug, it is always important to create a test t
 
 [quote, IBM BOB]
 ----
-A User reported that when finding a booking by a negative userId, the application throws an exception. Can you create a reproducer?
+A User reported that when searching for a booking with a negative userId, the application throws an exception. Can you create a reproducer?
 The user might be wrong; your mission is to determine whether it is reproducible.
 ----
 
@@ -82,24 +82,24 @@ After this, push the `Start New Task` button to start a new conversation.
 
 == Test Coverage
 
-Developers always try their best to write as many tests as possible, but it is always difficult to cover all use cases.
+Developers always strive to write as many tests as possible, but it is difficult to cover all use cases.
 We can use code assistants to improve the test coverage.
 
 [quote, IBM BOB]
 ----
-As a Tester, based on UserResourceNegativeTests, can you identify gaps and areas where coverage is inadequate? Suggest additional tests to ensure comprehensive coverage.
+As a Tester, based on the UserResourceNegativeTests, can you identify gaps and areas of inadequate coverage? Suggest additional tests to ensure comprehensive coverage.
 ----
 
 Creates a report with ideas on how to increase test coverage.
 
 == Test Coverage Improvement
 
-In some cases, we want to improve test coverage by inspecting the code, reading previous test coverage reports, and seeing how to improve.
+In some cases, we want to improve test coverage by inspecting the code, reviewing previous test coverage reports, and identifying ways to improve.
 
 [quote, IBM BOB]
 ----
 Act as a tester explorer to find test cases to improve the test coverage based on the current JaCoCo test coverage report placed at src/test/resources/jacoco.xml file.
-Read the JaCoCo file, explore what code has been already tested, and what tests could be done to improve the coverage. 
+Read the JaCoCo file, explore what code has already been tested, and what tests could be done to improve the coverage. 
 It is not necessary to have 100% coverage, but increasing coverage for relevant cases is necessary. 
 ----
 
@@ -114,8 +114,8 @@ After this, push the `Start New Task` button to start a new conversation.
 
 == Test Performance
 
-Performance testing is also an important part of most applications; there are many possible frameworks to implement it, such as JMeter, Gatling (in Java), or Locust. 
-But the important thing here is to understand what the acceptable values are for each case, and which thresholds are acceptable or not.
+Performance testing is also an important part of most applications; there are many frameworks for implementing it, such as JMeter, Gatling (in Java), and Locust. 
+But the important thing here is to understand what the acceptable values are for each case and which thresholds are acceptable and which are not.
 
 Code Assistants can help with that, too, based on the trained data.
 
@@ -136,18 +136,18 @@ Test Performance Includes:
 
 We could ask Code Assistant to implement tests based on this analysis, but we'll skip for now, as it is not the purpose of this workshop.
 
-After this, Push the `Start New Task` button to start a new conversation.
+After this, push the `Start New Task` button to start a new conversation.
 
 == BDD with Gherkin
 
-Ideally, we should have BDD specs done before any implementation; however, we are in a rush, or it is legacy code, so no specs have been done yet.
-Not all projects have a way to verify that the application is doing what the business mandates, even though, of course, we know they are doing it because it has been running for years. 
+Ideally, we should have BDD specs in place before any implementation; however, we are in a rush, or it is legacy code, so no specs have been written yet.
+Not all projects have a way to verify that the application is doing what the business mandates, even though, of course, we know it is because it has been running for years. 
 
 But this is not an excuse to not have a minimal set of tests to verify its behavior.
 
 [quote, IBM BOB]
 ----
-You are a tester engineer who undestands code. You need to understand what FlightResource does, then generate a Gherkin specification file with features, scenarios, and Given/When/Then steps that explain your findings and propose test data.
+You are a tester engineer who understands code. You need to understand what FlightResource does, then generate a Gherkin specification file with features, scenarios, and Given/When/Then steps that explain your findings and propose test data.
 ----
 
 Created comprehensive Gherkin specification file: `FLIGHT_RESOURCE_GHERKIN_SPECIFICATION.feature`
@@ -169,14 +169,14 @@ Only implement the Gherkin file so I can review it before implementing it.
 
 Gherkin feature file created: `USER_ACCOUNT_CANCELLATION.feature`
 
-The specification includes comprehensive test scenarios; in a real scenario, you should validate whether all assumptions are correct and remove those that make no sense.
+The specification includes comprehensive test scenarios; in practice, you should validate that all assumptions are correct and remove those that don't make sense.
 
-After this, Push the `Start New Task` button to start a new conversation.
+After this, push the `Start New Task` button to start a new conversation.
 
 == Security
 
-Security tests are also a kind of test that requires collaboration between testers, the security team, and developers.
-Now, you can use the code assistant with Skills to verify the application's security, and write tests to ensure it is not happening.
+Security tests are also a type of test that requires collaboration among testers, the security team, and developers.
+Now, you can use the code assistant with Skills to verify the application's security and write tests to ensure it does not happen.
 
 Let's create a SKILL that is an expert for validating that there is no code injection in the application.
 The content of this file will serve as context for the code assistant to identify exactly which security vulnerability to search for.
@@ -207,11 +207,11 @@ queries, commands, or stored procedures.
 Common injection types include SQL, NoSQL, OS command, ORM, LDAP, Expression Language, and
 cross-site scripting.
 Injection is one of the most tested vulnerability categories, with 100% of applications tested
-for some form of injection, and it has the greatest number of CVEs of any category.
+for some form of injection, and it has the most CVEs of any category.
 
 ## Risk
 
-* Full database compromise through SQL injection enabling unauthorized data access, modification,
+* Full database compromise through SQL injection, enabling unauthorized data access, modification,
  or deletion.
 * Remote code execution on the server through OS command injection.
 * Cross-site scripting enabling session hijacking, credential theft, and defacement.
@@ -251,15 +251,15 @@ for some form of injection, and it has the greatest number of CVEs of any catego
 
 An application uses untrusted data in the construction of a vulnerable SQL call:
 
-```
+----
 String query = "SELECT * FROM accounts WHERE custID='" + request.getParameter("id") + "'";
-```
+----
 
 An attacker modifies the `id` parameter value in the browser to send `' OR '1'='1`:
 
-```
+----
 http://example.com/app/accountView?id=' OR '1'='1
-```
+----
 
 This changes the query to return all records from the accounts table.
 
@@ -267,9 +267,9 @@ This changes the query to return all records from the accounts table.
 
 An application uses Hibernate Query Language but constructs queries by concatenating user input:
 
-```
+----
 Query HQLQuery = session.createQuery("FROM accounts WHERE custID='" + request.getParameter("id") + "'");
-```
+----
 
 An attacker supplies `' OR custID IS NOT NULL OR custID='` which bypasses the filter and returns
 all accounts.
@@ -279,10 +279,10 @@ While HQL has fewer dangerous functions than raw SQL, unauthorized data access s
 
 An application passes user input directly to an OS command without sanitization:
 
-```
+----
 String cmd = "nslookup " + request.getParameter("domain");
 Runtime.getRuntime().exec(cmd);
-```
+----
 
 An attacker supplies `example.com; cat /etc/passwd` to execute arbitrary commands on the server.
 
@@ -328,7 +328,7 @@ Now, let's first scan the code for any of these vulnerabilities.
 
 [quote, IBM BOB]
 ----
-You are a security expert, can you verify that there is no injection security vulnerability in the current code using the injection SKILL?
+You are a security expert. Can you verify that there is no injection security vulnerability in the current code using the injection SKILL?
 ----
 
 Code Assistant will review the code and provide some insights about security issues.
@@ -340,11 +340,11 @@ Without starting a new conversation, run the following prompt:
 
 [quote, IBM BOB]
 ----
-You are a test engineer. Can you write tests for the high-severity issues? The idea is to have some tests representing what an attacker might use to exploit the application.
+You are a test engineer. Can you write tests for the high-severity issues? The idea is to have tests that represent what an attacker might use to exploit the application.
 ----
 
 It will create some test classes to verify the high-severity issues.
 
 Of course, you could ask IBM Bob to generate the code to fix the security issues, but this is an exercise for developers.
 
-These tests are white-box tests, or tests that verifies a part of the application. We'll start doing more black-box testing to verify the entire web application.
+These tests are white-box tests, or tests that verify a part of the application. We'll start doing more black-box testing to verify the entire web application.
