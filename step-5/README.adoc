@@ -3,7 +3,7 @@
 In the previous section, we used Playwright MCP Server to access the web application. 
 But there is another one, which, even though it only works with Chrome, offers invaluable information for testers.
 
-The Code Assistant has all the Chrome Dev Tools data available.
+The Code Assistant has all Chrome DevTools data available.
 From CSS, JavaScript, network traffic, ... you can use this information to ask complex questions such as: _Analyze the network traffic and create a report showing communications that could be improved to offer a better user experience_.
 
 == Open Project
@@ -29,26 +29,26 @@ Similar to Playwright, keep an eye on the chat window in case you need to approv
 
 TIP: In this case, we are describing the issue directly in the Prompt, but we could connect the Code Assistant to the Issue Manager and seed the information from the Issue Manager directly to the Context.
 
-Let's use Chrome Dev Tools for testing performance issues.
+Let's use Chrome DevTools to test performance issues.
 
 == Testing Performance
 
-As testers, we can verify that there are no performance issues in the UI before we release it.
-At the end, these tests are not blockers, but they are important for detecting them and notifying upper management so they can decide whether to proceed with the release.
+As testers, we can verify that there are no UI performance issues before we release it.
+Ultimately, these tests are not blockers, but they are important for detecting them and notifying upper management so they can decide whether to proceed with the release.
 
-You do this with Performance Tests, but with Code Assistants, we can perform surgery on specific parts of the application and provide a complete analysis of how and why things are happening.
+You do this with Performance Tests, but with Code Assistants, we can perform surgery on specific parts of the application and provide a complete analysis of how and why things happen.
 
 Start a New Conversation and run the following prompt:
 
 [quote, IBM BOB]
 ----
-You are a tester expert in analyzing traces and network traffic to find performance issues.
+You are a testing expert at analyzing traces and network traffic to identify performance issues.
 
 Please check the LCP (Largest Contentful Paint) for http://localhost:5173/flights. Tell me which element is the LCP, run a performance trace, and provide actionable steps (if necessary) to reduce its render time in my CSS or HTML.
 ----
 
 This prompt generates a summary of changes to use to improve performance.
-The idea behind this report is to identify the issues and document them for future releases.
+The purpose of this report is to identify issues and document them for future releases.
 
 == Nielsen's Heuristics
 
