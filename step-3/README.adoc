@@ -347,4 +347,24 @@ It will create some test classes to verify the high-severity issues.
 
 Of course, you could ask IBM Bob to generate the code to fix the security issues, but this is an exercise for developers.
 
+== Optimazing Execution
+
+As testers, we design tests, perform exploratory testing, define the testing strategy, and provide an optional test execution plan for the given CPUs or Machines.
+
+Close the current `IBM Bob` project and open this `workshop` directory.
+You'll see that there is a `surefire.xml` file that represents a test execution report when using Maven.
+
+Let's ask IBM Bob to find the best schedule:
+
+[quote, IBM BOB]
+----
+You are a process scheduler planner. Your task is to read a surefire Junit execution and, for each class's time execution, find the best execution order of test classes to maximize time execution if the computer has only 4 CPUs.
+----
+
+IBM Bob will present a report on the optimal order for executing tests and a Gantt diagram to visualize the execution.
+
+If you want to visualize, go to https://mermaid.live/ and copy the content.
+
+image::gantt.png[]
+
 These tests are white-box tests, or tests that verify a part of the application. We'll start doing more black-box testing to verify the entire web application.

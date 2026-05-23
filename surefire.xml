@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd"
+    name="EnterpriseTestSuite"
+    tests="120"
+    failures="3"
+    errors="1"
+    skipped="4"
+    time="1684.532">
+
+    <properties>
+        <property name="java.version" value="21"/>
+        <property name="os.name" value="Linux"/>
+        <property name="ci.pipeline" value="nightly"/>
+    </properties>
+
+    <!-- ================================================================== -->
+    <!-- FAST PURE UNIT TESTS (ideal for max parallelization) -->
+    <!-- ================================================================== -->
+
+    <testcase classname="com.enterprise.auth.TokenParserTest" name="shouldParseJwt" time="0.023"/>
+    <testcase classname="com.enterprise.auth.TokenParserTest" name="shouldRejectExpiredToken" time="0.031"/>
+    <testcase classname="com.enterprise.auth.TokenParserTest" name="shouldHandleMalformedJwt" time="0.028"/>
+
+    <testcase classname="com.enterprise.user.UserMapperTest" name="shouldMapEntityToDto" time="0.014"/>
+    <testcase classname="com.enterprise.user.UserMapperTest" name="shouldHandleNullFields" time="0.011"/>
+    <testcase classname="com.enterprise.user.UserMapperTest" name="shouldMapNestedObjects" time="0.019"/>
+
+    <testcase classname="com.enterprise.payment.DiscountCalculatorTest" name="shouldApplyBlackFridayDiscount" time="0.008"/>
+    <testcase classname="com.enterprise.payment.DiscountCalculatorTest" name="shouldApplyLoyaltyDiscount" time="0.006"/>
+    <testcase classname="com.enterprise.payment.DiscountCalculatorTest" name="shouldNotStackCoupons" time="0.009"/>
+
+    <testcase classname="com.enterprise.search.QueryBuilderTest" name="shouldGenerateSql" time="0.012"/>
+    <testcase classname="com.enterprise.search.QueryBuilderTest" name="shouldEscapeInput" time="0.015"/>
+    <testcase classname="com.enterprise.search.QueryBuilderTest" name="shouldHandleComplexFilters" time="0.026"/>
+
+    <!-- ================================================================== -->
+    <!-- CPU HEAVY TESTS -->
+    <!-- ================================================================== -->
+
+    <testcase classname="com.enterprise.analytics.VectorEmbeddingTest" name="shouldGenerateEmbeddings" time="4.211"/>
+    <testcase classname="com.enterprise.analytics.VectorEmbeddingTest" name="shouldNormalizeLargeVectors" time="5.112"/>
+    <testcase classname="com.enterprise.analytics.VectorEmbeddingTest" name="shouldClusterIncidents" time="8.442"/>
+
+    <testcase classname="com.enterprise.ml.FraudDetectionModelTest" name="shouldTrainFraudModel" time="21.553"/>
+    <testcase classname="com.enterprise.ml.FraudDetectionModelTest" name="shouldPredictFraudProbability" time="7.882"/>
+    <testcase classname="com.enterprise.ml.FraudDetectionModelTest" name="shouldHandleFeatureScaling" time="6.441"/>
+
+    <testcase classname="com.enterprise.image.ImageSimilarityEngineTest" name="shouldIndexEmbeddings" time="12.781"/>
+    <testcase classname="com.enterprise.image.ImageSimilarityEngineTest" name="shouldComputeCosineDistance" time="5.334"/>
+    <testcase classname="com.enterprise.image.ImageSimilarityEngineTest" name="shouldOptimizeSearchTree" time="18.552"/>
+
+    <!-- ================================================================== -->
+    <!-- DATABASE INTEGRATION TESTS -->
+    <!-- ================================================================== -->
+
+    <testcase classname="com.enterprise.user.UserRepositoryIT" name="shouldInsertUser" time="2.118"/>
+    <testcase classname="com.enterprise.user.UserRepositoryIT" name="shouldUpdateUser" time="2.883"/>
+    <testcase classname="com.enterprise.user.UserRepositoryIT" name="shouldDeleteUser" time="1.992"/>
+    <testcase classname="com.enterprise.user.UserRepositoryIT" name="shouldHandleLargeTransactions" time="8.774"/>
+
+    <testcase classname="com.enterprise.payment.PaymentRepositoryIT" name="shouldPersistPayment" time="3.442"/>
+    <testcase classname="com.enterprise.payment.PaymentRepositoryIT" name="shouldRollbackTransaction" time="5.182"/>
+    <testcase classname="com.enterprise.payment.PaymentRepositoryIT" name="shouldHandleDeadlocks" time="14.222"/>
+
+    <testcase classname="com.enterprise.inventory.InventoryRepositoryIT" name="shouldReserveStock" time="6.811"/>
+    <testcase classname="com.enterprise.inventory.InventoryRepositoryIT" name="shouldReleaseStock" time="5.338"/>
+    <testcase classname="com.enterprise.inventory.InventoryRepositoryIT" name="shouldPreventNegativeInventory" time="4.998"/>
+
+    <!-- ================================================================== -->
+    <!-- KAFKA / ASYNC TESTS -->
+    <!-- ================================================================== -->
+
+    <testcase classname="com.enterprise.kafka.OrderEventConsumerIT" name="shouldConsumeOrderEvents" time="11.112"/>
+    <testcase classname="com.enterprise.kafka.OrderEventConsumerIT" name="shouldRetryFailedMessages" time="24.331"/>
+    <testcase classname="com.enterprise.kafka.OrderEventConsumerIT" name="shouldHandlePoisonPillMessages" time="18.442"/>
+
+    <testcase classname="com.enterprise.kafka.NotificationPublisherIT" name="shouldPublishNotifications" time="9.772"/>
+    <testcase classname="com.enterprise.kafka.NotificationPublisherIT" name="shouldGuaranteeOrdering" time="16.225"/>
+
+    <!-- ================================================================== -->
+    <!-- HTTP / EXTERNAL SYSTEM TESTS -->
+    <!-- ================================================================== -->
+
+    <testcase classname="com.enterprise.api.CustomerApiIT" name="shouldCreateCustomer" time="7.229"/>
+    <testcase classname="com.enterprise.api.CustomerApiIT" name="shouldRejectInvalidPayload" time="4.337"/>
+    <testcase classname="com.enterprise.api.CustomerApiIT" name="shouldHandleRateLimits" time="19.111"/>
+
+    <testcase classname="com.enterprise.api.BillingApiIT" name="shouldCreateInvoice" time="12.773"/>
+    <testcase classname="com.enterprise.api.BillingApiIT" name="shouldProcessRefund" time="15.226"/>
+    <testcase classname="com.enterprise.api.BillingApiIT" name="shouldRetryThirdPartyTimeouts" time="33.551"/>
+
+    <!-- ================================================================== -->
+    <!-- SELENIUM / E2E TESTS -->
+    <!-- ================================================================== -->
+
+    <testcase classname="com.enterprise.e2e.CheckoutFlowE2E" name="shouldCompleteCheckoutFlow" time="88.221"/>
+    <testcase classname="com.enterprise.e2e.CheckoutFlowE2E" name="shouldHandlePaymentFailure" time="74.114"/>
+    <testcase classname="com.enterprise.e2e.CheckoutFlowE2E" name="shouldRecoverCartAfterRefresh" time="55.991"/>
+
+    <testcase classname="com.enterprise.e2e.UserRegistrationFlowE2E" name="shouldRegisterUser" time="49.332"/>
+    <testcase classname="com.enterprise.e2e.UserRegistrationFlowE2E" name="shouldVerifyEmail" time="61.882"/>
+    <testcase classname="com.enterprise.e2e.UserRegistrationFlowE2E" name="shouldResetPassword" time="57.992"/>
+
+    <testcase classname="com.enterprise.e2e.AdminPortalE2E" name="shouldGenerateReport" time="122.881"/>
+    <testcase classname="com.enterprise.e2e.AdminPortalE2E" name="shouldExportCsv" time="93.553"/>
+    <testcase classname="com.enterprise.e2e.AdminPortalE2E" name="shouldHandleLargeDataset" time="145.228">
+        <failure message="Timeout waiting for export completion" type="java.lang.AssertionError">
+            Export operation exceeded SLA threshold.
+        </failure>
+    </testcase>
+
+    <!-- ================================================================== -->
+    <!-- TESTCONTAINERS TESTS -->
+    <!-- ================================================================== -->
+
+    <testcase classname="com.enterprise.containers.PostgresContainerIT" name="shouldStartPostgresContainer" time="31.114"/>
+    <testcase classname="com.enterprise.containers.PostgresContainerIT" name="shouldRunMigrations" time="28.774"/>
+
+    <testcase classname="com.enterprise.containers.KafkaContainerIT" name="shouldStartKafkaCluster" time="42.228"/>
+    <testcase classname="com.enterprise.containers.KafkaContainerIT" name="shouldReplicateMessages" time="37.992"/>
+
+    <testcase classname="com.enterprise.containers.RedisContainerIT" name="shouldWarmDistributedCache" time="17.338"/>
+
+    <!-- ================================================================== -->
+    <!-- FLAKY / NETWORK SENSITIVE TESTS -->
+    <!-- ================================================================== -->
+
+    <testcase classname="com.enterprise.network.RemoteStorageIT" name="shouldUploadLargeFile" time="66.221"/>
+    <testcase classname="com.enterprise.network.RemoteStorageIT" name="shouldResumeInterruptedUpload" time="81.773">
+        <failure message="Intermittent network failure" type="java.net.SocketTimeoutException">
+            Timeout while waiting for remote storage.
+        </failure>
+    </testcase>
+
+    <testcase classname="com.enterprise.network.CdnReplicationIT" name="shouldReplicateAssetsGlobally" time="104.551"/>
+
+    <!-- ================================================================== -->
+    <!-- SECURITY TESTS -->
+    <!-- ================================================================== -->
+
+    <testcase classname="com.enterprise.security.OAuthFlowIT" name="shouldAuthenticateUsingOidc" time="14.772"/>
+    <testcase classname="com.enterprise.security.OAuthFlowIT" name="shouldRefreshAccessToken" time="11.224"/>
+    <testcase classname="com.enterprise.security.OAuthFlowIT" name="shouldRejectTamperedJwt" time="9.992"/>
+
+    <testcase classname="com.enterprise.security.VaultSecretsIT" name="shouldRetrieveSecret" time="6.551"/>
+    <testcase classname="com.enterprise.security.VaultSecretsIT" name="shouldRotateCredentials" time="18.993"/>
+    <testcase classname="com.enterprise.security.VaultSecretsIT" name="shouldHandleVaultOutage" time="41.112">
+        <error message="Vault unavailable" type="java.net.ConnectException">
+            Failed to connect to Vault cluster.
+        </error>
+    </testcase>
+
+    <!-- ================================================================== -->
+    <!-- CONTRACT TESTS -->
+    <!-- ================================================================== -->
+
+    <testcase classname="com.enterprise.contract.OrderApiContractTest" name="shouldMatchOpenApiSpec" time="3.331"/>
+    <testcase classname="com.enterprise.contract.OrderApiContractTest" name="shouldValidateResponseSchema" time="4.882"/>
+
+    <testcase classname="com.enterprise.contract.PaymentProviderContractTest" name="shouldValidateThirdPartyContract" time="11.228"/>
+    <testcase classname="com.enterprise.contract.PaymentProviderContractTest" name="shouldHandleDeprecatedFields" time="7.771"/>
+
+    <!-- ================================================================== -->
+    <!-- LOAD / PERFORMANCE TESTS -->
+    <!-- ================================================================== -->
+
+    <testcase classname="com.enterprise.performance.SearchLoadTest" name="shouldHandle10kConcurrentRequests" time="178.332"/>
+    <testcase classname="com.enterprise.performance.SearchLoadTest" name="shouldMaintainP99Latency" time="201.118"/>
+
+    <testcase classname="com.enterprise.performance.CheckoutLoadTest" name="shouldProcessPeakTraffic" time="245.221"/>
+
+    <!-- ================================================================== -->
+    <!-- SKIPPED TESTS -->
+    <!-- ================================================================== -->
+
+    <testcase classname="com.enterprise.experimental.QuantumSearchIT" name="shouldRunQuantumOptimization" time="0.0">
+        <skipped message="Disabled in CI environment"/>
+    </testcase>
+
+    <testcase classname="com.enterprise.experimental.LegacySoapIT" name="shouldCallLegacySoapService" time="0.0">
+        <skipped message="External dependency unavailable"/>
+    </testcase>
+
+    <testcase classname="com.enterprise.experimental.AiModelBenchmarkTest" name="shouldBenchmarkGpuInference" time="0.0">
+        <skipped message="GPU node not available"/>
+    </testcase>
+
+    <testcase classname="com.enterprise.experimental.ChaosEngineeringIT" name="shouldSurviveNetworkPartition" time="0.0">
+        <skipped message="Chaos tests only run weekly"/>
+    </testcase>
+
+    <!-- ================================================================== -->
+    <!-- MANY ADDITIONAL REALISTIC TESTS -->
+    <!-- ================================================================== -->
+
+    <testcase classname="com.enterprise.orders.OrderServiceTest" name="shouldCreateOrder" time="0.033"/>
+    <testcase classname="com.enterprise.orders.OrderServiceTest" name="shouldCancelOrder" time="0.027"/>
+    <testcase classname="com.enterprise.orders.OrderServiceTest" name="shouldValidateInventory" time="0.045"/>
+
+    <testcase classname="com.enterprise.shipping.ShippingCalculatorTest" name="shouldCalculateInternationalShipping" time="0.091"/>
+    <testcase classname="com.enterprise.shipping.ShippingCalculatorTest" name="shouldApplyWeekendRates" time="0.066"/>
+
+    <testcase classname="com.enterprise.tax.TaxEngineTest" name="shouldCalculateVat" time="0.043"/>
+    <testcase classname="com.enterprise.tax.TaxEngineTest" name="shouldHandleRegionalRules" time="0.081"/>
+
+    <testcase classname="com.enterprise.notifications.EmailServiceIT" name="shouldSendEmail" time="8.118"/>
+    <testcase classname="com.enterprise.notifications.EmailServiceIT" name="shouldRetryTransientFailures" time="17.552"/>
+
+    <testcase classname="com.enterprise.cache.RedisCacheIT" name="shouldCacheUserProfile" time="3.442"/>
+    <testcase classname="com.enterprise.cache.RedisCacheIT" name="shouldExpireEntries" time="6.771"/>
+
+    <testcase classname="com.enterprise.reporting.ReportingEngineIT" name="shouldGeneratePdfReport" time="55.228"/>
+    <testcase classname="com.enterprise.reporting.ReportingEngineIT" name="shouldGenerateExcelExport" time="61.882"/>
+
+    <testcase classname="com.enterprise.scheduler.JobSchedulerIT" name="shouldExecuteCronJobs" time="14.772"/>
+    <testcase classname="com.enterprise.scheduler.JobSchedulerIT" name="shouldRecoverFailedJobs" time="19.552"/>
+
+    <testcase classname="com.enterprise.websocket.RealtimeNotificationIT" name="shouldBroadcastNotifications" time="12.882"/>
+    <testcase classname="com.enterprise.websocket.RealtimeNotificationIT" name="shouldReconnectClients" time="18.113"/>
+
+    <testcase classname="com.enterprise.observability.TracingIT" name="shouldPropagateTraceIds" time="4.221"/>
+    <testcase classname="com.enterprise.observability.TracingIT" name="shouldExportMetrics" time="7.114"/>
+
+    <testcase classname="com.enterprise.audit.AuditTrailIT" name="shouldPersistAuditEvents" time="9.882"/>
+    <testcase classname="com.enterprise.audit.AuditTrailIT" name="shouldEncryptSensitiveFields" time="13.118"/>
+
+    <testcase classname="com.enterprise.backup.BackupRestoreIT" name="shouldBackupDatabase" time="88.331"/>
+    <testcase classname="com.enterprise.backup.BackupRestoreIT" name="shouldRestoreDatabase" time="122.991">
+        <failure message="Restore checksum mismatch" type="java.lang.AssertionError">
+            Database restore validation failed.
+        </failure>
+    </testcase>
+
+    <testcase classname="com.enterprise.batch.BatchImportIT" name="shouldImportMillionRecords" time="177.442"/>
+    <testcase classname="com.enterprise.batch.BatchImportIT" name="shouldHandleMalformedCsv" time="22.114"/>
+
+    <testcase classname="com.enterprise.ai.ChatAssistantIT" name="shouldGenerateEmbeddings" time="35.442"/>
+    <testcase classname="com.enterprise.ai.ChatAssistantIT" name="shouldSearchVectorDatabase" time="27.992"/>
+    <testcase classname="com.enterprise.ai.ChatAssistantIT" name="shouldRerankResults" time="18.118"/>
+
+    <system-out>
+        Parallel execution enabled with 16 worker threads.
+        Testcontainers reuse mode disabled.
+        Observed JVM heap usage peak: 5.4 GB.
+        Average DB connection pool saturation: 82%.
+        Kafka consumer lag spikes observed during NotificationPublisherIT.
+        Selenium E2E tests consuming 74% of total pipeline execution time.
+    </system-out>
+
+    <system-err>
+        WARNING: Some flaky network tests detected.
+        WARNING: VaultSecretsIT failed due to transient infrastructure outage.
+    </system-err>
+
+</testsuite>
