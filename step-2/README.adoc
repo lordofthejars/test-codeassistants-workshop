@@ -39,7 +39,7 @@ Open 3 terminal windows and start each service.
 cd booking_system_frontend
 ----
 
-Create a `.env` file with the following content:
+Create a `.env` file with the following content inside the `booking_system_frontend` directory:
 
 [source]
 ----
