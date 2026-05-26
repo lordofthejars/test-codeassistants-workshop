@@ -68,7 +68,7 @@ IMPORTANT: You need to have Podman/Docker (Desktop) installed to run this demo. 
 
 [source, bash]
 ----
-cd inventory_hold_service
+cd inventory-hold-service-quarkus
 ./mvnw clean package -DskipTests
 java -jar target/inventory-hold-service-1.0.0.jar
 ----
